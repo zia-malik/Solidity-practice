@@ -6,6 +6,7 @@ contract Temp {
 
     string private name = "zia";
     uint private age = 23;
+    uint id = 1;
 
     constructor() public {
     }
