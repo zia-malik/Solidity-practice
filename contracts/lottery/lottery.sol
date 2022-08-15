@@ -13,12 +13,13 @@ contract Lottery {
 
     function buylottery() external payable
     {
+        require(msg.sender != deployer);
         require(msg.value == 2 ether);
         participants.push(payable(msg.sender));
     }
 
     function winning() external view returns(uint balance){
-        return address(this).balance;
+        return uint((participants.length-1)*2);
     }
 
     function total_partipants() external view returns(uint){
@@ -34,10 +35,6 @@ contract Lottery {
         participants = new address payable[](0);
         //delete participants;
     }
-
-    function showwinner(uint _n) public view returns(address winner){
-         return participants[_n];
-    } 
 
     function random() internal view returns(uint){
         return uint(keccak256(abi.encodePacked(block.timestamp, block.difficulty, participants.length)));
