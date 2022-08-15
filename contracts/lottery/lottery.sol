@@ -11,7 +11,7 @@ contract lottery {
         deployer = msg.sender;
     }
 
-    function buylottery() external payable
+    receive() external payable
     {
         require(msg.sender != deployer);
         require(msg.value == 2 ether);
