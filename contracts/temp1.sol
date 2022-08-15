@@ -1,19 +1,25 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.4;
+pragma solidity ^0.8.16;
 
 contract Temp {
 
-    string private name = "zia";
-    uint private age = 23;
+    enum state{present,absent,leave,half_leave,in_meeting}
 
-    constructor() public {
+    struct employee{
+        string name;
+        state status;
     }
 
-    function setname(string memory n) public {
-        name = n;
+    mapping(uint=>employee) public employees;
+
+    function add_employee(uint id,string memory _name, state _status) public {
+        employees[id].name = _name;
+        employees[id].status = _status;
     }
-    function setage(uint a) public {
-        age = a;
+
+    function view_employee(uint id) view public returns(employee memory){
+        return employees[id];
     }
+    
 }
