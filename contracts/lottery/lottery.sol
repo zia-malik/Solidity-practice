@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.16;
 
-contract lottery {
+contract Lottery {
 
     address public deployer; 
     address payable[] public participants;
