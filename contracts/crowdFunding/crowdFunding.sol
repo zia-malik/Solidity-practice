@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.16;
 
-contract crowdFunding {
+contract CrowdFunding {
 
     address payable[] contributersAddresses;
     mapping(address=>uint) public contributers;
